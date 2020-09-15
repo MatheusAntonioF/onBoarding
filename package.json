@@ -1,0 +1,13 @@
+{
+  "name": "on-boarding",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Matheus Antonio <matheusantoniof@gmail.com>",
+  "license": "MIT",
+  "private": "true",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}
