@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "typeorm": "TS_NODE_PROJECT=tsconfig.ts-node.json TS_NODE_TRANSPILE_ONLY=true ts-node ./node_modules/.bin/typeorm",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "dev": "ts-node-dev --respawn --ignore-watch node_modules --no-notify src/server.ts",
     "start": "ts-node src/index.ts"
   },
