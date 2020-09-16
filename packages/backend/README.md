@@ -1,7 +1,5 @@
-# Awesome Project Build with TypeORM
+# Requirements to user profile
 
-Steps to run this project:
-
-1. Run `npm i` command
-2. Setup database settings inside `ormconfig.json` file
-3. Run `npm start` command
+- Years experience (Input type number)
+- List with the dominated technologies (dropdown containing the techs)
+- Link portfolio
