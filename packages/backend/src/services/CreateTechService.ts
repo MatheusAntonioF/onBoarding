@@ -11,7 +11,7 @@ class CreateTechService {
   async execute({ name }: RequestDTO): Promise<Tech> {
     const techRepository = getRepository(Tech);
 
-    const checkTechExists = await techRepository.find({ where: { name } });
+    const checkTechExists = await techRepository.findOne({ where: { name } });
 
     if (checkTechExists) throw new AppError('Tech does have exists');
 
