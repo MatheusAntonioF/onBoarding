@@ -19,6 +19,10 @@ export default class CreateProfile1600222647142 implements MigrationInterface {
             default: '0',
           },
           {
+            name: 'user_id',
+            type: 'uuid',
+          },
+          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',

@@ -2,14 +2,15 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
   OneToOne,
+  OneToMany,
+  JoinColumn,
 } from 'typeorm';
 
-import Tech from './Tech';
 import User from './User';
+import Tech from './Tech';
 
 @Entity('profiles')
 class Profile {
@@ -19,11 +20,15 @@ class Profile {
   @Column({ name: 'year_experience' })
   yearExperience: number;
 
-  @OneToMany(() => Tech, tech => tech.id)
-  techs: Tech[];
+  @Column()
+  user_id: string;
 
-  @OneToOne(() => User, user => user.id)
-  user: string;
+  @OneToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
+
+  @OneToMany(() => Tech, tech => tech)
+  techs: Tech[];
 
   @CreateDateColumn()
   created_at: Date;
