@@ -2,8 +2,17 @@ import { Request, Response } from 'express';
 
 import CreateTechService from '../services/CreateTechService';
 import DeleteTechService from '../services/DeleteTechService';
+import ListTechsService from '../services/ListTechsService';
 
 class TechController {
+  async list(request: Request, response: Response): Promise<Response> {
+    const listTechService = new ListTechsService();
+
+    const techs = await listTechService.execute();
+
+    return response.json(techs);
+  }
+
   async create(request: Request, response: Response): Promise<Response> {
     const { name } = request.body;
 
