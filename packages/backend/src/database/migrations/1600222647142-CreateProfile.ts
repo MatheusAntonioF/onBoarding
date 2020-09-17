@@ -1,13 +1,8 @@
-import {
-  MigrationInterface,
-  QueryRunner,
-  Table,
-  TableForeignKey,
-} from 'typeorm';
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateProfile1600266514223 implements MigrationInterface {
+export default class CreateProfile1600222647142 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.createTable(
+    return queryRunner.createTable(
       new Table({
         name: 'profiles',
         columns: [
@@ -21,10 +16,7 @@ export default class CreateProfile1600266514223 implements MigrationInterface {
           {
             name: 'year_experience',
             type: 'integer',
-          },
-          {
-            name: 'techs',
-            type: 'uuid',
+            default: '0',
           },
           {
             name: 'created_at',
@@ -39,23 +31,9 @@ export default class CreateProfile1600266514223 implements MigrationInterface {
         ],
       })
     );
-
-    return queryRunner.createForeignKey(
-      'profiles',
-      new TableForeignKey({
-        name: 'ProfileTechs',
-        columnNames: ['techs'],
-        referencedColumnNames: ['id'],
-        referencedTableName: 'techs',
-        onDelete: 'SET NULL',
-        onUpdate: 'SET NULL',
-      })
-    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('profiles');
-
-    return queryRunner.dropForeignKey('profiles', 'ProfileTechs');
+    return queryRunner.dropTable('profiles');
   }
 }

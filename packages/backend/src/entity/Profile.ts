@@ -23,7 +23,7 @@ class Profile {
   techs: Tech[];
 
   @OneToOne(() => User, user => user.id)
-  user: User;
+  user: string;
 
   @CreateDateColumn()
   created_at: Date;

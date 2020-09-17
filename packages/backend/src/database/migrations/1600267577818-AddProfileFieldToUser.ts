@@ -31,8 +31,8 @@ export default class AddProfileFieldToUser1600267577818
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropColumn('users', 'profile');
+    await queryRunner.dropForeignKey('users', 'UserProfile');
 
-    return queryRunner.dropForeignKey('users', 'UserProfile');
+    return queryRunner.dropColumn('users', 'profile');
   }
 }
