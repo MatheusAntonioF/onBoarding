@@ -30,21 +30,23 @@ class CreateProfileService {
 
     if (checkExistsProfile) throw new AppError('This user already was profile');
 
-    const serializeTechs = await techRepository.find({
-      where: {
-        name: In(techs),
-      },
-    });
-
     const user = await userRepository.findOne({ where: { id: user_id } });
 
-    const profile = profileRepository.create({
-      yearExperience,
-      user,
-      techs: serializeTechs,
+    if (!user) throw new AppError('User dont exists');
+
+    const techsExisting = await techRepository.find({
+      where: { name: In(techs) },
     });
 
-    return profile;
+    const createdProfile = profileRepository.create({
+      yearExperience,
+      user_id,
+      techs: techsExisting,
+    });
+
+    await profileRepository.save(createdProfile);
+
+    return createdProfile;
   }
 }
 

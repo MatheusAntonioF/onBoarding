@@ -4,9 +4,7 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
 } from 'typeorm';
-import Profile from './Profile';
 
 @Entity('techs')
 class Tech {
@@ -15,9 +13,6 @@ class Tech {
 
   @Column()
   name: string;
-
-  @ManyToOne(() => Profile, profile => profile)
-  profile: Profile;
 
   @CreateDateColumn()
   created_at: Date;

@@ -5,8 +5,9 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToOne,
-  OneToMany,
   JoinColumn,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 
 import User from './User';
@@ -23,11 +24,12 @@ class Profile {
   @Column()
   user_id: string;
 
-  @OneToOne(() => User)
+  @OneToOne(() => User, { eager: true })
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @OneToMany(() => Tech, tech => tech)
+  @ManyToMany(() => Tech, { eager: true })
+  @JoinTable({ name: 'profile_techs' })
   techs: Tech[];
 
   @CreateDateColumn()
