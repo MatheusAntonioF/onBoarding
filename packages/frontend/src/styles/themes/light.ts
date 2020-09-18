@@ -1,5 +1,6 @@
 const light = {
   background: {
+    darker: '#dadaf1',
     main: '#F2F2FA',
   },
   primary: {

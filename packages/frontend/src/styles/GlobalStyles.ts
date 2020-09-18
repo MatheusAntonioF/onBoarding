@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import background from '../assets/background.svg';
+
 export default createGlobalStyle`
   * {
     margin: 0;
@@ -8,7 +10,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html, body {
+  html, body, #root {
     width: 100vw;
     height: 100vh;
   }
@@ -19,7 +21,10 @@ export default createGlobalStyle`
     font-family: 'Baloo Chettan 2', cursive, sans-serif;
     font-size: 100%;
 
-    background: ${({ theme }) => theme.background.main}
+    background: ${({ theme }) =>
+      theme.background.main} url(${background}) no-repeat 80% top;
+    background-origin: border-box;
+    background-size: 500px;
   }
 
   input, button {

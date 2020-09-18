@@ -4,12 +4,16 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import { SignIn } from '../pages/index';
 
+import Layout from '../components/Layout';
+
 const Routes: React.FC = () => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={SignIn} />
-      </Switch>
+      <Layout>
+        <Switch>
+          <Route path="/" exact component={SignIn} />
+        </Switch>
+      </Layout>
     </BrowserRouter>
   );
 };
