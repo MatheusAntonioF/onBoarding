@@ -28,7 +28,9 @@ export default createGlobalStyle`
   }
 
   input, button {
-    color: ${({ theme }) => theme.text.main}
+    color: ${({ theme }) => theme.text.main};
+    outline: 0;
+    border: 0;
   }
 
   a {
