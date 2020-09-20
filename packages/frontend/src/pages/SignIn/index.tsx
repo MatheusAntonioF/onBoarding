@@ -2,6 +2,8 @@ import React, { useState, FormEvent } from 'react';
 
 import { toast } from 'react-toastify';
 
+import { useHistory } from 'react-router-dom';
+
 import { Container } from './styles';
 
 import Form from '../../components/Form';
@@ -16,6 +18,8 @@ interface FormData {
 const SignIn: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({} as FormData);
 
+  const history = useHistory();
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
@@ -23,6 +27,7 @@ const SignIn: React.FC = () => {
   const handleSubmit = async (e: FormEvent) => {
     try {
       e.preventDefault();
+      history.push('/create-profile');
     } catch (err) {
       toast.error('Falha ao fazer login! Verifique os dados e tente novamente');
     }
