@@ -9,6 +9,11 @@ const light = {
   text: {
     main: '#3A3A3A',
   },
+  grafit: {
+    darker: '#808080',
+    main: '#999999',
+    light: '#cccccc',
+  },
 };
 
 export default light;

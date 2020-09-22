@@ -41,7 +41,8 @@
     "@typescript-eslint/no-use-before-define": [1],
     "react/prop-types": "off",
     "react/jsx-props-no-spreading": "off",
-    "jsx-a11y/label-has-associated-control": "off"
+    "jsx-a11y/label-has-associated-control": "off",
+    "no-plusplus": "off"
   },
   "settings": {
     "import/resolver": {

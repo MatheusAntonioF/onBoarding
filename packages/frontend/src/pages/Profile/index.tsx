@@ -7,7 +7,7 @@ import MultiStepsForm from './MultiStepsForm';
 const Profile: React.FC = () => {
   return (
     <Container>
-      <h1>PRofile</h1>
+      <h1>Crie seu perfil</h1>
       <MultiStepsForm />
     </Container>
   );

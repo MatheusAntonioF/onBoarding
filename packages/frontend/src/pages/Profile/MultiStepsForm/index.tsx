@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Container, Title } from './styles';
+import { Container, Title, Form } from './styles';
 
 import YearExperienceStep from './YearExperienceStep';
 import ListTechsStep from './ListTechsStep';
@@ -42,7 +42,11 @@ const MultiStepsForm: React.FC = () => {
   return (
     <Container>
       <Title>{currentStep.title}</Title>
-      <Provider value={{ handleSetStepForm }}>{currentStep.component}</Provider>
+      <Form>
+        <Provider value={{ handleSetStepForm }}>
+          {currentStep.component}
+        </Provider>
+      </Form>
     </Container>
   );
 };
