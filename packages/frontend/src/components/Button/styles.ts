@@ -16,7 +16,7 @@ export const ButtonComponent = styled.button<IPropsButton>`
 
   color: ${({ theme }) => theme.background.main};
 
-  background: ${({ theme }) => theme.primary.main};
+  background: ${({ theme, color }) => theme[color].main};
 
   font-size: ${props => props.fontSize || '16'}px;
 

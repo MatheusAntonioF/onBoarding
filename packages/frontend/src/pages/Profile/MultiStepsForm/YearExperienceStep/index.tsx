@@ -26,7 +26,11 @@ const YearExperienceStep: React.FC = () => {
 
   return (
     <>
-      <Select label="Anos de experiência" options={defaultOptions()} />
+      <Select
+        label="Anos de experiência"
+        placeholder="Selecione uma opção..."
+        options={defaultOptions()}
+      />
       <div className="group">
         <Button color="primary" onClick={() => handleSetStepForm('listTechs')}>
           Próximo

@@ -21,5 +21,7 @@ export const FormComponent = styled.form`
     margin-top: 25px;
     display: flex;
     justify-content: space-evenly;
+
+    width: 100%;
   }
 `;

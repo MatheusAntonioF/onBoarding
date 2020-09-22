@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import { Container, Title, Form } from './styles';
 
@@ -33,11 +33,11 @@ const MultiStepsForm: React.FC = () => {
 
   const currentStep = defaultStepsForm[stepForm];
 
-  const handleSetStepForm = (stepPositionForm: string) => {
+  const handleSetStepForm = useCallback((stepPositionForm: string) => {
     const newStep = defaultStepsForm[stepPositionForm].nameStep;
 
     setStepForm(newStep);
-  };
+  }, []);
 
   return (
     <Container>
