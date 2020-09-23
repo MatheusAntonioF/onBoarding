@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, 100px);
 
   width: 100%;
 
-  > div.div-input {
+  gap: 15px;
+
+  > div {
     align-items: center;
 
     max-width: 100px;
@@ -17,6 +18,9 @@ export const Container = styled.div`
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    margin-top: 10px;
+    input {
+      width: 20px;
+      height: 20px;
+    }
   }
 `;
