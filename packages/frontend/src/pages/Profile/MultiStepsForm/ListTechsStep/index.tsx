@@ -16,25 +16,49 @@ interface TechDTO {
 }
 
 const ListTechsStep: React.FC = () => {
-  const [techs, setTechs] = useState<TechDTO[]>([]);
+  const [techsApi, setTechsApi] = useState<TechDTO[]>([]);
 
-  const { handleSetStepForm } = useContext(MultiStepsContext);
+  const { techs, setTechs, handleSetStepForm } = useContext(MultiStepsContext);
 
   useEffect(() => {
     async function loadTechs() {
       const { data } = await api.get('/tech');
 
-      setTechs(data);
+      setTechsApi(data);
     }
 
     loadTechs();
   }, []);
 
+  const handleSelectTech = ({
+    target,
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    const { name } = target;
+
+    const techFinded = techs.find(tech => tech.name === name);
+
+    if (techFinded) {
+      return setTechs(
+        techs.filter(tech => {
+          if (tech.name !== name) return tech;
+        })
+      );
+    }
+
+    return setTechs([...techs, { name }]);
+  };
+
   return (
     <>
       <Container>
-        {techs.map(tech => (
-          <Input key={tech.id} type="checkbox" label={tech.name} />
+        {techsApi.map(tech => (
+          <Input
+            key={tech.id}
+            type="checkbox"
+            label={tech.name}
+            name={tech.name}
+            onChange={handleSelectTech}
+          />
         ))}
       </Container>
       <div className="group">

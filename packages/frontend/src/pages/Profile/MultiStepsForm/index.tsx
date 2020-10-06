@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, FormEvent } from 'react';
 
 import { Container, Title, Form } from './styles';
 
@@ -6,6 +6,7 @@ import YearExperienceStep from './YearExperienceStep';
 import ListTechsStep from './ListTechsStep';
 
 import Provider from './Provider';
+import api from '../../../services/api';
 
 interface DefaultStepProps {
   [key: string]: {
@@ -28,7 +29,15 @@ const defaultStepsForm: DefaultStepProps = {
   },
 };
 
+interface Tech {
+  name: string;
+}
+
 const MultiStepsForm: React.FC = () => {
+  const [yearExperience, setYearExperience] = useState('0');
+
+  const [techs, setTechs] = useState<Tech[]>([]);
+
   const [stepForm, setStepForm] = useState('yearExperience');
 
   const currentStep = defaultStepsForm[stepForm];
@@ -39,11 +48,29 @@ const MultiStepsForm: React.FC = () => {
     setStepForm(newStep);
   }, []);
 
+  const handleSubmit = async (e: FormEvent) => {
+    try {
+      e.preventDefault();
+
+      await api.post(`profile/`);
+    } catch (err) {
+      console.log('');
+    }
+  };
+
   return (
     <Container>
       <Title>{currentStep.title}</Title>
-      <Form>
-        <Provider value={{ handleSetStepForm }}>
+      <Form onSubmit={handleSubmit}>
+        <Provider
+          value={{
+            yearExperience,
+            setYearExperience,
+            techs,
+            setTechs,
+            handleSetStepForm,
+          }}
+        >
           {currentStep.component}
         </Provider>
       </Form>

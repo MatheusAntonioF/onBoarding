@@ -42,7 +42,9 @@
     "react/prop-types": "off",
     "react/jsx-props-no-spreading": "off",
     "jsx-a11y/label-has-associated-control": "off",
-    "no-plusplus": "off"
+    "no-plusplus": "off",
+    "consistent-return": "off",
+    "array-callback-return": "off"
   },
   "settings": {
     "import/resolver": {
