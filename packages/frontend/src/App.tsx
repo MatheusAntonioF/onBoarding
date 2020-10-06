@@ -12,13 +12,19 @@ import light from './styles/themes/light';
 
 import Routes from './routes';
 
+import { AuthProvider } from './hooks/Auth';
+
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={light}>
-      <GlobalStyles />
-      <Routes />
+    <>
+      <ThemeProvider theme={light}>
+        <GlobalStyles />
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
+      </ThemeProvider>
       <ToastContainer />
-    </ThemeProvider>
+    </>
   );
 };
 
